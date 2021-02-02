@@ -16,7 +16,7 @@ var app = new Vue({
     methods: {
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
-            this.enemy.health -= Math.random()*11 < this.critChance ? this.damage : this.damage*2;
+            this.enemy.health -= Math.random()*(this.critChance+1) < this.critChance ? this.damage : this.damage*2;
             if(this.enemy.health <= 0) {
                 this.gold++;
                 this.generateNewEnemy();
