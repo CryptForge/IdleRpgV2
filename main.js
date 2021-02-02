@@ -12,7 +12,7 @@ var app = new Vue({
                 "Sharpen",
                 "Makes the weapon even sharper!",
                 5,1.02,
-                () => {console.log("yeet")}
+                () => {increaseDamage(1);}
             ),
         },
         enemy: {
@@ -26,6 +26,9 @@ var app = new Vue({
     methods: {
         prepareShop: function() {
             
+        },
+        increaseDamage: function(damage) {
+            this.currentWeapon.damage += damage;
         },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
