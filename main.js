@@ -1,13 +1,14 @@
 import {default as Upgrade} from "./modules/Upgrade.js";
+import {default as Weapon} from "./modules/Weapon.js";
 
 var app = new Vue({
     el: '#app',
     data: {
         damage: 1,
         gold: 0,
-        critChance: 10,
-        //create a object array for upgrades instead of creating individual variables for each upgrade?? idk how to do that tho
-        enhanceUpgrade: new Upgrade(10,2),
+        canAttack: true,
+        enhanceUpgrade: new Upgrade(5,2),
+        currentWeapon: new Weapon("wooden sword",1,1.2,5),
         enemy: {
             maxHealth: 10,
             health: 10
@@ -16,11 +17,14 @@ var app = new Vue({
     methods: {
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
-            this.enemy.health -= Math.random()*(this.critChance+1) < this.critChance ? this.damage : this.damage*2;
+            if(!this.canAttack) return;
+            this.enemy.health -= Math.random()*11 < (this.currentWeapon.critChance+1) ? this.damage : this.damage*2;
             if(this.enemy.health <= 0) {
-                this.gold++;
+                this.gold += Math.floor(Math.random() * 2) + 1;
                 this.generateNewEnemy();
             }
+            this.canAttack = false;
+            setTimeout(this.resetAttackCooldown,this.currentWeapon.attackSpeed * 1000);
         },
         generateNewEnemy: function() {
             this.enemy.maxHealth = Math.floor(Math.random() * 10) + 1;
@@ -32,6 +36,9 @@ var app = new Vue({
                 this.enhanceUpgrade.upgrade();
                 this.damage = this.enhanceUpgrade.level;
             }
+        },
+        resetAttackCooldown: function() {
+            this.canAttack = true;
         }
     }
 });
