@@ -7,7 +7,6 @@ var app = new Vue({
         damage: 1,
         gold: 0,
         canAttack: true,
-        enhanceUpgrade: new Upgrade(5,2),
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
         upgrades: {
             "enhanceWeapon": new Upgrade(5,2, () => {console.log("yeet")}),
@@ -51,8 +50,6 @@ var app = new Vue({
         },
         resetAttackCooldown: function() {
             this.canAttack = true;
-            
-            this.damage += 2;
         }
     }
 });
