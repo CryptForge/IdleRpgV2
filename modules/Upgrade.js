@@ -15,7 +15,7 @@ export default class Upgrade {
 
     upgrade() {
         this.level++;
-        this.price *= this.priceIncrease;
+        this.price = Math.round(this.price * this.priceIncrease*100)/100;
         this.onUpgrade();
     }
 }
