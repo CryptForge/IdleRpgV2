@@ -24,9 +24,6 @@ var app = window.app = new Vue({
         this.prepareShop();
     },
     methods: {
-        prepareShop: function() {
-            
-        },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
             if(!this.canAttack) return;
