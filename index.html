@@ -35,7 +35,7 @@
                         <path fill="#b5b5b5" d="M4 6L3 5C4 6 6 2 8 1C10 0 10 0 9 2C8 4 4 6 5 7 Z"/>
                         <path fill="#c7c7c7" d="M4 6L3 5C4 6 6 2 8 1C10 0 10 0 9 2C6 3 6 4 4 6Z"/>
                     </svg>
-                    {{damage}}
+                    {{currentWeapon.damage}}
                 </span>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div>
                 <p class="">Enemy Health: {{ enemy.health }}/{{enemy.maxHealth}}</p>
                 <button class="" v-on:click="attackEnemy">Attack</button>
-                <p class=""></p>
+                <br>
                 <p class="">Attack Cooldown: {{currentWeapon.attackSpeed}}s</p>
                 <button class="" v-on:click="enhanceWeapon">Enhance Weapon</button>
             </div>
