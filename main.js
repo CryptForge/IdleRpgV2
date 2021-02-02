@@ -9,12 +9,24 @@ var app = new Vue({
         canAttack: true,
         enhanceUpgrade: new Upgrade(5,2),
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
+        upgrades: {
+            "enhanceWeapon": new Upgrade(5,2, () => {console.log("yeet")}),
+        },
         enemy: {
             maxHealth: 10,
             health: 10
-        }
+        },
+    },
+    mounted: function() { // basically window.onload for vue.js
+        this.prepareShop();
     },
     methods: {
+        prepareShop: function() {
+            
+        },
+        openShop: function() {
+
+        },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
             if(!this.canAttack) return;
@@ -39,6 +51,8 @@ var app = new Vue({
         },
         resetAttackCooldown: function() {
             this.canAttack = true;
+            
+            this.damage += 2;
         }
     }
 });

@@ -1,0 +1,121 @@
+:root {
+    font-size: 16px;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+    --BGCOLOR: #435c4d;
+    --APPCOLOR: #4b7253;
+    --ACCENT: #23a5b6;
+    --PURSECOLOR: #5c3d17;
+    --SHOPCOLOR: #2a1d70;
+    --MAINPANELCOLOR: #1d7061;
+}
+
+body, html {
+    background-color: var(--BGCOLOR);
+    padding: 0;
+    margin: 0;
+}
+
+#app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    width: 80%;
+    height: 90%;
+    flex-wrap: wrap;
+    background-color: var(--APPCOLOR);
+    align-content: center;
+    border-radius: 2rem;
+}
+#app > div {
+    border-radius: 2rem;
+}
+#app > div > span {
+    display: inline-block;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#app > div > div {
+    position: relative;
+    top: 4rem;
+    display:flex;
+    flex-direction: row;
+}
+
+.grid-icon {
+    color:white;
+    display: inline;
+}
+.icon {
+    position: relative;
+    top: 0.1em;
+    width: 1em;
+    height: auto;
+    fill: white;
+    display: inline-block;
+    line-height: 1;
+}
+
+.purse {
+    background-color: var(--PURSECOLOR);
+    padding-left: 3rem;
+    padding-right: 3rem;
+    color:white;
+    font-size: 4rem;
+}
+.purse > div {
+    height: calc(100% - 8rem);
+    width: auto;
+    flex-direction: column;
+}
+
+.shop {
+    background-color: var(--SHOPCOLOR);
+}
+
+.shopgrid {
+    
+}
+
+.mainpanel {
+    background-color: var(--MAINPANELCOLOR);
+}
+.mainpanel > div {
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 15px 30px 15px 30px;
+    border-radius: 2rem;
+}
+
+button:focus {
+    outline-style: none;
+    border-color: transparent;
+}
