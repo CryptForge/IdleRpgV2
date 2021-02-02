@@ -20,9 +20,6 @@ var app = window.app = new Vue({
             health: 10
         },
     },
-    mounted: function() { // basically window.onload for vue.js
-        this.prepareShop();
-    },
     methods: {
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
