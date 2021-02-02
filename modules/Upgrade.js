@@ -14,9 +14,11 @@ export default class Upgrade {
     }
 
     upgrade() {
-        this.level++;
-        this.price = Math.round(this.price * this.priceIncrease*100)/100;
-        console.log(window.app.$data.gold);
-        this.onUpgrade();
+        if(window.app.$data.gold >= this.price) {
+            window.app.$data.gold -= this.price;
+            this.level++;
+            this.price = Math.round(this.price * this.priceIncrease*100)/100;
+            this.onUpgrade();
+        }
     }
 }

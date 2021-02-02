@@ -11,8 +11,8 @@ var app = new Vue({
             enhanceWeapon: new Upgrade(
                 "Sharpen",
                 "Makes the weapon even sharper!",
-                5,1.02,
-                () => {this.increaseDamage(1);}
+                5,1.5,
+                () => {window.app.$data.currentWeapon.damage += 1}
             ),
         },
         enemy: {
@@ -26,9 +26,6 @@ var app = new Vue({
     methods: {
         prepareShop: function() {
             
-        },
-        increaseDamage: function(damage) {
-            this.currentWeapon.damage += damage;
         },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
@@ -44,14 +41,7 @@ var app = new Vue({
         generateNewEnemy: function() {
             this.enemy.maxHealth = Math.floor(Math.random() * 10) + 1;
             this.enemy.health = this.enemy.maxHealth;
-        },
-        enhanceWeapon: function() {
-            if(this.gold >= this.upgrades.enhanceWeapon.price) {
-                this.gold -= this.upgrades.enhanceWeapon.price;
-                this.upgrades.enhanceWeapon.upgrade();
-                this.currentWeapon.damage = this.upgrades.enhanceWeapon.level;
-            }
-        },
+        }
     }
 });
 window.app = app;
