@@ -4,7 +4,7 @@ import {default as Weapon} from "./modules/Weapon.js";
 var app = window.app = new Vue({
     el: '#app',
     data: {
-        gold: 0,
+        gold: 999999,
         canAttack: true,
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
         upgrades: {
@@ -21,6 +21,9 @@ var app = window.app = new Vue({
         },
     },
     methods: {
+        increaseDamage: function(damage) {
+            this.currentWeapon.damage += damage;
+        },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
             if(!this.canAttack) return;
