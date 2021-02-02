@@ -11,7 +11,7 @@ var app = window.app = new Vue({
             enhanceWeapon: new Upgrade(
                 "Sharpen",
                 "Makes the weapon even sharper!",
-                5,1.02,
+                5,1.25,
                 () => {window.app.increaseDamage(2);}
             ),
         },
