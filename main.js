@@ -28,6 +28,7 @@ var app = new Vue({
             if(this.gold >= this.enhanceUpgrade.price) {
                 this.enhanceUpgrade.upgrade();
                 this.damage = this.enhanceUpgrade.level;
+                this.gold -= this.enhanceUpgrade.price;
             }
         }
     }
