@@ -25,9 +25,9 @@ var app = new Vue({
             this.enemy.health = this.enemy.maxHealth;
         },
         enhanceWeapon: function() {
-            if(this.gold >= this.enhanceUpgrade.getPrice()) {
+            if(this.gold >= this.enhanceUpgrade.price) {
                 this.enhanceUpgrade.upgrade();
-                this.damage = this.enhanceUpgrade.getLevel();
+                this.damage = this.enhanceUpgrade.level;
             }
         }
     }
