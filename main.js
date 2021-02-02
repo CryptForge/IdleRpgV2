@@ -1,3 +1,5 @@
+import {default as Upgrade} from "./modules/Upgrade.js";
+
 var app = new Vue({
     el: '#app',
     data: {
