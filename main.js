@@ -1,7 +1,7 @@
 import {default as Upgrade} from "./modules/Upgrade.js";
 import {default as Weapon} from "./modules/Weapon.js";
 
-var app = new Vue({
+var app = window.app = new Vue({
     el: '#app',
     data: {
         gold: 0,
@@ -11,8 +11,8 @@ var app = new Vue({
             enhanceWeapon: new Upgrade(
                 "Sharpen",
                 "Makes the weapon even sharper!",
-                5,1.5,
-                () => {window.app.$data.currentWeapon.damage += 1}
+                5,1.02,
+                () => {window.app.increaseDamage(2);}
             ),
         },
         enemy: {
@@ -44,4 +44,3 @@ var app = new Vue({
         }
     }
 });
-window.app = app;
