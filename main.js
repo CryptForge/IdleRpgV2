@@ -8,7 +8,12 @@ var app = new Vue({
         canAttack: true,
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
         upgrades: {
-            enhanceWeapon: new Upgrade(5,2, () => {console.log("yeet")}),
+            enhanceWeapon: new Upgrade(
+                "Sharpen",
+                "Makes the weapon even sharper!",
+                5,2,
+                () => {console.log("yeet")}
+            ),
         },
         enemy: {
             maxHealth: 10,
@@ -21,9 +26,6 @@ var app = new Vue({
     methods: {
         prepareShop: function() {
             
-        },
-        openShop: function() {
-
         },
         //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {

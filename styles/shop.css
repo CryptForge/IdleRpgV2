@@ -1,0 +1,48 @@
+* {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.shop {
+    background-color: var(--SHOPCOLOR);
+}
+
+.shop > div {
+    background-color: var(--SHOPBGCOLOR);
+    padding: 2rem 1.5rem 2rem 1.5rem;
+}
+
+.shopitem{
+    height: 100%;
+    width: 100%;
+    background-color: var(--SHOPITEMCOLOR);
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+.shopitem:hover {
+    transform: scale(1.03);
+}
+.shopitem:active {
+    transform: scale(1);
+}
+
+.shopitem-title {
+    font-size: 2rem;
+}
+
+.shopitem-desc {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.shopitem-price {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-right: 0.1em;
+}

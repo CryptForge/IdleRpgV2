@@ -20,7 +20,9 @@
     --ACCENT: #23a5b6;
     --PURSECOLOR: #5c3d17;
     --SHOPCOLOR: #2a1d70;
+    --SHOPBGCOLOR: #1b105a;
     --MAINPANELCOLOR: #1d7061;
+    --SHOPITEMCOLOR: #bad4d3;
 }
 
 body, html {
@@ -93,14 +95,6 @@ body, html {
     height: calc(100% - 8rem);
     width: auto;
     flex-direction: column;
-}
-
-.shop {
-    background-color: var(--SHOPCOLOR);
-}
-
-.shopgrid {
-    
 }
 
 .mainpanel {

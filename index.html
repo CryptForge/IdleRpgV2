@@ -5,13 +5,13 @@
     <title>Idle Rpg V2</title>
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/utils.css">
+    <link rel="stylesheet" href="./styles/shop.css">
     <!--Downloaded dependencies cuz vscode wouldn't do autocomplete for them otherwise. probably not ideal-->
     <script src="libs/vue.js"></script>
     <script src="https://kit.fontawesome.com/9ba8b4f4b6.js" crossorigin="anonymous"></script> <!-- Temporary Icons -->
     <!-- Icons can be found here (https://fontawesome.com/icons?d=gallery&m=free) -->
 </head>
 <body>
-    <!--<script src="Upgrade.js"></script>-->
     <div id="app" class="shadow">
         <div style="grid-column: 2 / span 3; grid-row: 3 / span 1;" class="shadow purse">
             <span>
@@ -45,6 +45,18 @@
                 Shop
             </span>
             <div>
+                <div v-for="item in upgrades" class="shopitem" v-on:click="item.upgrade()">
+                    <span class="shopitem-price">
+                        <i class="fas fa-dollar-sign"></i>
+                        {{item.price}}
+                    </span>
+                    <span class="shopitem-title">
+                        {{item.Title}}
+                    </span>
+                    <span class="shopitem-desc">
+                        {{item.Description}}
+                    </span>
+                </div>
             </div>
         </div>
         <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel">
