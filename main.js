@@ -34,7 +34,7 @@ var app = new Vue({
                 this.generateNewEnemy();
             }
             this.canAttack = false;
-            setTimeout(this.resetAttackCooldown,this.currentWeapon.attackSpeed * 1000);
+            setTimeout(()=>{this.canAttack = true;},this.currentWeapon.attackSpeed * 1000);
         },
         generateNewEnemy: function() {
             this.enemy.maxHealth = Math.floor(Math.random() * 10) + 1;
@@ -47,8 +47,5 @@ var app = new Vue({
                 this.currentWeapon.damage = this.upgrades.enhanceWeapon.level;
             }
         },
-        resetAttackCooldown: function() {
-            this.canAttack = true;
-        }
     }
 });

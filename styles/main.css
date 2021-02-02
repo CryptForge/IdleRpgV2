@@ -107,12 +107,30 @@ body, html {
     background-color: var(--MAINPANELCOLOR);
 }
 .mainpanel > div {
-    flex-wrap: wrap;
+    height: calc(100% - 8rem);
+    display: block;
 }
 
+.attackButton {
+    position: absolute;
+    left:50%;
+    bottom: 2rem;
+    transform:translateX(-50%);
+    width:80%;
+    height: 4rem;
+} .attackButton:hover{transform: translateX(-50%) scale(1.1);}
+
 button {
+    font-size: 2rem;
     padding: 15px 30px 15px 30px;
     border-radius: 2rem;
+    border-style: none;
+    box-shadow: 0px 10px 30px -15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 button:focus {

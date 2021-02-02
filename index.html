@@ -54,10 +54,7 @@
             </span>
             <div>
                 <p class="">Enemy Health: {{ enemy.health }}/{{enemy.maxHealth}}</p>
-                <button class="" v-on:click="attackEnemy">Attack</button>
-                <br>
-                <p class="">Attack Cooldown: {{currentWeapon.attackSpeed}}s</p>
-                <button class="" v-on:click="enhanceWeapon">Enhance Weapon</button>
+                <button class="AccentColor attackButton" v-on:click="attackEnemy">Attack</button>
             </div>
         </div>
     </div>
