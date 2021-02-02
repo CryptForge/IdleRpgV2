@@ -12,7 +12,7 @@ var app = new Vue({
                 "Sharpen",
                 "Makes the weapon even sharper!",
                 5,1.02,
-                () => {increaseDamage(1);}
+                () => {this.increaseDamage(1);}
             ),
         },
         enemy: {
