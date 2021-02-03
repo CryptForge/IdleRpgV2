@@ -1,6 +1,6 @@
 //Enemies
 import {default as Enemy} from "./Monsters/Enemy.js";
-import {default as Slime} from "./Monsters/all.js";
+import {default as Slime, Rat} from "./Monsters/all.js";
 
 import {default as Upgrade} from "./modules/Upgrade.js";
 import {default as Weapon} from "./modules/Weapon.js";
@@ -73,7 +73,7 @@ var app = window.app = new Vue({
         getGold: function(){
             return Math.round(this.gold*10)/10
         },
-        possibleEnemies: [Slime],
+        possibleEnemies: [Slime, Rat],
         enemy: new Enemy(1,3,3,6,6,6,7,8, "./Monsters/slime.svg", "Slime"),
         stats: [
             {
