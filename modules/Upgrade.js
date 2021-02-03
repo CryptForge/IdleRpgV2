@@ -4,13 +4,15 @@ export default class Upgrade {
     priceIncrease;
     Title;
     Description;
+    unlocked;
 
-    constructor(title, desc, price, priceIncrease, onUpgrade) {
+    constructor(title, desc, price, priceIncrease, onUpgrade, unlocked = true) {
         this.Title = title;
         this.Description = desc;
         this.price = price;
         this.priceIncrease = priceIncrease;
         this.onUpgrade = onUpgrade;
+        this.unlocked = unlocked;
     }
 
     upgrade() {

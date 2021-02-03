@@ -12,13 +12,14 @@ window.app = new Vue({
                 "Sharpen",
                 "Makes the weapon even sharper! (+2 damage)",
                 5,1.25,
-                () => {window.app.increaseDamage(2);}
+                () => {window.app.increaseDamage(2);window.app.upgrades.luck.unlocked = true;}
             ),
             luck: new Upgrade(
                 "Luck",
                 "Increases your luck... somehow (more gold drops)",
                 10,1.5,
-                () => {window.app.$data.enemy.minGold++; window.app.$data.enemy.maxGold++}
+                () => {window.app.$data.enemy.minGold++; window.app.$data.enemy.maxGold++},
+                false
             )
         },
         enemy: {

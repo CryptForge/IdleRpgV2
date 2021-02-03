@@ -46,7 +46,7 @@
                     Shop
                 </span>
                 <div>
-                    <div v-for="item in upgrades" class="shopitem" v-on:click="item.upgrade()">
+                    <div v-for="item in upgrades" class="shopitem" v-on:click="item.upgrade()" v-if="item.unlocked">
                         <span class="shopitem-price">
                             <i class="fas fa-dollar-sign"></i>
                             {{item.price}}
