@@ -38,6 +38,22 @@
     font-size: 0.9rem;
 }
 
+.shopitem:hover > .shopitem-level {
+    transform: scale(1.02) translateY(-50%);
+    right: 1rem;
+    opacity: 0.5;
+}
+
+.shopitem-level {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: 6rem;
+    opacity: 0;
+    transition: right 0.3s ease, opacity 0.3s ease;
+}
+
 .shopitem-price {
     display: inline-block;
     position: relative;
