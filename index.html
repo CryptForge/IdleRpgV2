@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/utils.css">
     <link rel="stylesheet" href="./styles/shop.css">
+    <link rel="stylesheet" href="./styles/stats.css">
     <!--Downloaded dependencies cuz vscode wouldn't do autocomplete for them otherwise. probably not ideal-->
     <script src="libs/vue.js"></script>
     <script src="https://kit.fontawesome.com/9ba8b4f4b6.js" crossorigin="anonymous"></script> <!-- Temporary Icons -->
@@ -13,8 +14,21 @@
 </head>
 <body>
     <div id="app">
-        <div id="contentPanel">
-            <div style="grid-column: 2 / span 3; grid-row: 3 / span 1;" class="shadow purse">
+        <div id="stats" class="shadow">
+            <div v-for="stat in stats" class="statitem shadow">
+                <span class="statitem-title">
+                    {{stat.title}}
+                </span>
+                <span class="statitem-desc">
+                    {{stat.desc}}
+                </span>
+                <span class="statitem-value">
+                    {{stat.value}}
+                </span>
+            </div>
+        </div>
+        <div id="contentPanel" class="shadow">
+            <div style="grid-column: 2 / span 3; grid-row: 3 / span 1;" class="shadow purse mobilecompatpanel">
                 <span>
                     <i class="fas fa-wallet grid-icon"></i>
                     Purse
@@ -40,7 +54,7 @@
                     </span>
                 </div>
             </div>
-            <div style="grid-column: 1 / span 2; grid-row: 1 / span 2;" class="shadow shop">
+            <div style="grid-column: 1 / span 2; grid-row: 1 / span 2;" class="shadow shop mobilecompatpanel">
                 <span>
                     <i class="fas fa-money-bill-wave grid-icon"></i>
                     Shop
@@ -63,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel">
+            <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel mobilecompatpanel">
                 <span>
                     <i class="fas fa-gamepad"></i>
                     Main Panel
@@ -74,7 +88,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     <script src="main.js" type="module"></script>
 </body>
 </html>

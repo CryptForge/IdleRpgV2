@@ -33,7 +33,24 @@ window.app = new Vue({
         },
         getGold: function(){
             return Math.round(this.gold*10)/10
-        }
+        },
+        stats: [
+            {
+                title: "Title",
+                desc: "description",
+                value: "value",
+            },
+            {
+                title: "Title",
+                desc: "description",
+                value: "value",
+            },
+            {
+                title: "Title",
+                desc: "description",
+                value: "value",
+            },
+        ],
     },
     methods: {
         increaseDamage: function(damage) {

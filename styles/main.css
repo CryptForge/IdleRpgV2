@@ -23,12 +23,15 @@
     --SHOPBGCOLOR: #1b105a;
     --MAINPANELCOLOR: #1d7061;
     --SHOPITEMCOLOR: #bad4d3;
+    --STATSPANELCOLOR: #4b7253;
+    --STATITEMCOLOR: 1d7061;
 }
 
 body, html {
     background-color: var(--BGCOLOR);
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 #contentPanel {
@@ -50,6 +53,7 @@ body, html {
     background-color: var(--APPCOLOR);
     align-content: center;
     border-radius: 2rem;
+    transition: left 0.3s ease;
 }
 #contentPanel > div {
     border-radius: 2rem;
@@ -131,4 +135,10 @@ button:hover {
 button:focus {
     outline-style: none;
     border-color: transparent;
+}
+
+@media only screen and (max-width: 768px){
+    .mobilecompatpanel {
+        grid-column: 1 / span 2;
+    }
 }
