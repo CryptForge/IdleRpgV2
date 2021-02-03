@@ -1,7 +1,7 @@
 import {default as Upgrade} from "./modules/Upgrade.js";
 import {default as Weapon} from "./modules/Weapon.js";
 
-var app = window.app = new Vue({
+window.app = new Vue({
     el: '#app',
     data: {
         gold: 999999,
@@ -10,12 +10,23 @@ var app = window.app = new Vue({
         upgrades: {
             enhanceWeapon: new Upgrade(
                 "Sharpen",
-                "Makes the weapon even sharper!",
+                "Makes the weapon even sharper! (+2 damage)",
                 5,1.25,
                 () => {window.app.increaseDamage(2);}
             ),
+            luck: new Upgrade(
+                "Luck",
+                "Increases your luck... somehow (more gold drops)",
+                10,1.5,
+                () => {window.app.$data.enemy.minGold++; window.app.$data.enemy.maxGold++}
+            )
         },
         enemy: {
+            minGold: 1,
+            maxGold: 2,
+            minMaxHealth: 1,
+            maxMaxHealth: 10,
+
             maxHealth: 10,
             health: 10
         },
@@ -27,20 +38,25 @@ var app = window.app = new Vue({
         increaseDamage: function(damage) {
             this.currentWeapon.damage += damage;
         },
-        //These things could also fit in the html but i've put them here for the future
         attackEnemy: function() {
             if(!this.canAttack) return;
             this.enemy.health -= Math.random()*11 < (this.currentWeapon.critChance+1) ? this.currentWeapon.damage : this.currentWeapon.damage*2;
             if(this.enemy.health <= 0) {
-                this.gold += Math.floor(Math.random() * 2) + 1;
+                this.gold += randomInteger(this.enemy.minGold,this.enemy.maxGold);
+                this.enemy.maxMaxHealth += 0.5;
+                this.enemy.minMaxHealth += 0.25;
                 this.generateNewEnemy();
             }
             this.canAttack = false;
             setTimeout(()=>{this.canAttack = true;},this.currentWeapon.attackSpeed * 1000);
         },
         generateNewEnemy: function() {
-            this.enemy.maxHealth = Math.floor(Math.random() * 10) + 1;
+            this.enemy.maxHealth = randomInteger(this.enemy.minMaxHealth,this.enemy.maxMaxHealth);
             this.enemy.health = this.enemy.maxHealth;
         }
     }
 });
+
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + Math.floor(min);
+  }

@@ -24,6 +24,7 @@
 }
 .shopitem:hover {
     transform: scale(1.03);
+    cursor: pointer;
 }
 .shopitem:active {
     transform: scale(1);
