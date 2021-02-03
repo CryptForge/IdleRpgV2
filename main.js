@@ -1,7 +1,7 @@
 import {default as Upgrade} from "./modules/Upgrade.js";
 import {default as Weapon} from "./modules/Weapon.js";
 
-window.app = new Vue({
+var app = window.app = new Vue({
     el: '#app',
     data: {
         gold: 999999,
@@ -48,9 +48,20 @@ window.app = new Vue({
             {
                 title: "Title",
                 desc: "description",
-                value: "value",
+                value: "",
             },
         ],
+    },
+    mounted: function(){
+        this.stats[2].value = this.currentWeapon.damage;
+    },
+    watch: {
+        "currentWeapon.damage": {
+            handler:function (val, oldval) {
+                this.stats[2].value = val;
+            },
+            deep:true,
+        }
     },
     methods: {
         increaseDamage: function(damage) {
