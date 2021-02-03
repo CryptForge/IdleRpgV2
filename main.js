@@ -19,6 +19,9 @@ var app = window.app = new Vue({
             maxHealth: 10,
             health: 10
         },
+        getGold: function(){
+            return Math.round(this.gold*10)/10
+        }
     },
     methods: {
         increaseDamage: function(damage) {
