@@ -143,7 +143,10 @@ button:focus {
     }
 }
 
-.attackoverlay-in {
+.attackoverlay-in{
+    animation: scaledown 0.3s ease forwards;
+}
+.attackoverlay-in > div {
     position: absolute;
     top: -20px;
     left: -20px;
@@ -153,6 +156,11 @@ button:focus {
     animation: overlay-in 0.3s ease forwards;
 }
 
+@keyframes scaledown{
+    to{
+        transform: translateX(-50%) scale(0.98);
+    }
+}
 @keyframes overlay-in {
     from {
         height:0%;
@@ -162,7 +170,7 @@ button:focus {
     }
 }
 
-.attackoverlay-out {
+.attackoverlay-out > div {
     position: absolute;
     bottom: -20px;
     left: -20px;

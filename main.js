@@ -79,10 +79,10 @@ var app = window.app = new Vue({
                 this.generateNewEnemy();
             }
             this.canAttack = false;
-            this.$refs["attackOverlay"].className = "attackoverlay-in"
+            this.$refs["attackOverlay"].className = "AccentColor attackButton attackoverlay-in"
             setTimeout(()=>{
                 this.canAttack = true;
-                this.$refs["attackOverlay"].className = "attackoverlay-out";
+                this.$refs["attackOverlay"].className = "AccentColor attackButton attackoverlay-out";
             },this.currentWeapon.attackSpeed * 1000);
         },
         generateNewEnemy: function() {
