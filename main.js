@@ -48,19 +48,19 @@ var app = window.app = new Vue({
         ],
     },
     mounted: function(){
-        this.stats[0].value = this.currentWeapon.attackSpeed;
-        this.stats[1].value = this.currentWeapon.damage;
+        this.stats[1].value = this.currentWeapon.attackSpeed;
+        this.stats[0].value = this.currentWeapon.damage;
     },
     watch: {
         "currentWeapon.attackSpeed": {
             handler:function (val, oldval) {
-                this.stats[0].value = val;
+                this.stats[1].value = val;
             },
             deep:true,
         },
         "currentWeapon.damage": {
             handler:function (val, oldval) {
-                this.stats[1].value = val;
+                this.stats[0].value = val;
             },
             deep:true,
         },
