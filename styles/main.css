@@ -105,8 +105,9 @@ body, html {
     background-color: var(--MAINPANELCOLOR);
 }
 .mainpanel > div {
-    height: calc(100% - 8rem);
+    height: calc(100% - 12rem);
     display: block;
+    padding: 2rem 2.5rem 2rem 2.5rem;
 }
 
 .attackButton {
@@ -158,7 +159,7 @@ button:focus {
 
 @keyframes scaledown{
     to{
-        transform: translateX(-50%) scale(0.98);
+        transform: translateX(-50%) scale(0) skewY(45deg);
     }
 }
 @keyframes overlay-in {
@@ -187,4 +188,44 @@ button:focus {
     to {
         height:0%;
     }
+}
+
+.hurtAnimation {
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    animation: hurt 2s ease;
+    pointer-events: none;
+}
+
+@keyframes hurt {
+    0% {
+        -webkit-box-shadow: inset 0px 0px 0px 0px #FF0000; 
+        box-shadow: inset 0px 0px 0px 0px #FF0000;
+    }
+    2% {
+        -webkit-box-shadow: inset 0px 0px 100px 2vh #FF0000; 
+        box-shadow: inset 0px 0px 100px 2vh #FF0000;
+    }
+    100% {
+        -webkit-box-shadow: inset 0px 0px 0px 0px #FF0000; 
+        box-shadow: inset 0px 0px 0px 0px #FF0000;
+    }
+}
+
+.enemySprite {
+    width: 1em;
+    height: 1em;
+}
+
+.enemyDiv {
+    position: absolute;
+    display: block;
+    background-color: var(--ACCENT);
+    font-size: 3rem;
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
 }

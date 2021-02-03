@@ -20,20 +20,21 @@
 }
 
 .shopitem{
-    animation: shopitem-appear 0.4s ease;
     height: 100%;
     width: 100%;
     background-color: var(--SHOPITEMCOLOR);
     padding: 1.5rem 1rem 1.5rem 1rem;
     border-radius: 1rem;
     transition: transform 0.3s ease;
+    animation: shopitem-appear 0.4s ease;
+    white-space: nowrap;
 }
 @keyframes shopitem-appear {
     from {
-        transform:scale(0);
+        transform: scale(0) skewY(45deg);
     }
     to {
-        transform: scale(1);
+        transform: scale(1) skewY(0deg);
     }
 }
 .shopitem:hover {

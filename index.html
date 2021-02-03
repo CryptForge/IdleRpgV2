@@ -15,6 +15,7 @@
 <body>
     <div id="app">
         <div id="stats">
+            <div class="stats-bg"></div>
             <div v-for="stat in stats" class="statitem shadow">
                 <span class="statitem-title">
                     {{stat.title}}
@@ -52,6 +53,18 @@
                         </svg>
                         {{currentWeapon.damage}}
                     </span>
+                    <span>
+                        <svg class="icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-left:1.5rem;">
+                            <path d="M25 0C45 0 50 5 50 25C50 45 45 50 28 50L28 20L39 18L40 13L10 13L11 18L22
+                            20L22 50C5 50 0 45 0 25C0 5 5 0 25 0" fill="#bdbdbd"
+                            style="clip-path: polygon(0 0, 100% 100%, 100% 0);" />
+                            <path d="M25 0C45 0 50 5 50 25C50 45 45 50 28 50L28 20L39 18L40 13L10 13L11 18L22
+                            20L22 50C5 50 0 45 0 25C0 5 5 0 25 0" fill="#a3a3a3"
+                            style="clip-path: polygon(0 0, 100% 100%, 0 100%);" />
+                        </svg>
+                        {{health}}
+                    </span>
                 </div>
             </div>
             <div style="grid-column: 1 / span 2; grid-row: 1 / span 2;" class="shadow shop mobilecompatpanel">
@@ -60,21 +73,7 @@
                     Shop
                 </span>
                 <div>
-                    <div v-for="item in upgrades" class="shopitem" v-on:click="item.upgrade()" v-if="item.unlocked">
-                        <span class="shopitem-price">
-                            <i class="fas fa-dollar-sign"></i>
-                            {{item.price}}
-                        </span>
-                        <span class="shopitem-title">
-                            {{item.Title}}
-                        </span>
-                        <span class="shopitem-desc">
-                            {{item.Description}}
-                        </span>
-                        <span class="shopitem-level">
-                            {{item.level}}
-                        </span>
-                    </div>
+                    <shop-item v-for="item in upgrades" :item="item" />
                 </div>
             </div>
             <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel mobilecompatpanel">
@@ -82,15 +81,15 @@
                     <i class="fas fa-gamepad"></i>
                     Main Panel
                 </span>
-                <div>
-                    <p class="">Enemy Health: {{ enemy.health }}/{{enemy.maxHealth}}</p>
+                <div>                    
                     <button ref="attackOverlay" class="AccentColor attackButton attackoverlay-out" v-on:click="attackEnemy">
-                        <div></div>
                         Attack
                     </button>
+                    <current-enemy :enemy="enemy" />
                 </div>
             </div>
         </div>
+        <div ref="hurtoverlay" class=""></div>
     </div>
     <script src="main.js" type="module"></script>
 </body>

@@ -1,9 +1,57 @@
+//Enemies
+import {default as Enemy} from "./Monsters/Enemy.js";
+import {default as Slime} from "./Monsters/all.js";
+
 import {default as Upgrade} from "./modules/Upgrade.js";
 import {default as Weapon} from "./modules/Weapon.js";
+
+Vue.component('current-enemy', {
+    template: 
+    `
+    <div class="enemyDiv">
+        <object :data="enemy.svgsrc" type="image/svg+xml" class="enemySprite"></object>
+        <span>{{enemy.name}} {{enemy.health}}/{{enemy.maxHealth}}</span>
+    </div>
+    `,
+    methods: {
+        
+    },
+    props: [
+        "enemy"
+    ],
+});
+
+Vue.component('shop-item', {
+    template: 
+    `
+    <div class="shopitem" v-on:click="item.upgrade()" v-if="item.unlocked" >
+        <span class="shopitem-price">
+            <i class="fas fa-dollar-sign"></i>
+            {{item.price}}
+        </span>
+        <span class="shopitem-title">
+            {{item.Title}}
+        </span>
+        <span class="shopitem-desc">
+            {{item.Description}}
+        </span>
+        <span class="shopitem-level">
+            {{item.level}}
+        </span>
+    </div>
+    `,
+    props: [
+        "item"
+    ],
+    methods: {
+        
+    }
+});
 
 var app = window.app = new Vue({
     el: '#app',
     data: {
+        health: 10,
         gold: 999999,
         canAttack: true,
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
@@ -22,18 +70,11 @@ var app = window.app = new Vue({
                 false
             )
         },
-        enemy: {
-            minGold: 1,
-            maxGold: 2,
-            minMaxHealth: 1,
-            maxMaxHealth: 10,
-
-            maxHealth: 10,
-            health: 10
-        },
         getGold: function(){
             return Math.round(this.gold*10)/10
         },
+        possibleEnemies: [Slime],
+        enemy: new Enemy(1,3,3,6,6,6,7,8, "./Monsters/slime.svg", "Slime"),
         stats: [
             {
                 title: "Weapon Damage",
@@ -50,6 +91,8 @@ var app = window.app = new Vue({
     mounted: function(){
         this.stats[1].value = this.currentWeapon.attackSpeed;
         this.stats[0].value = this.currentWeapon.damage;
+
+        this.generateEnemy();
     },
     watch: {
         "currentWeapon.attackSpeed": {
@@ -66,6 +109,16 @@ var app = window.app = new Vue({
         },
     },
     methods: {
+        generateEnemy: function(){
+            this.enemy.onDelete();
+            this.enemy = new this.possibleEnemies[Math.floor(Math.random() * this.possibleEnemies.length)]();
+        },
+        hurt: function() {
+            this.$refs["hurtoverlay"].className ="hurtAnimation";
+            setTimeout(()=>{
+                this.$refs["hurtoverlay"].classList.remove("hurtAnimation");
+            }, 2000);
+        },
         increaseDamage: function(damage) {
             this.currentWeapon.damage += damage;
         },
@@ -76,7 +129,7 @@ var app = window.app = new Vue({
                 this.gold += randomInteger(this.enemy.minGold,this.enemy.maxGold);
                 this.enemy.maxMaxHealth += 0.5;
                 this.enemy.minMaxHealth += 0.25;
-                this.generateNewEnemy();
+                this.generateEnemy();
             }
             this.canAttack = false;
             this.$refs["attackOverlay"].className = "AccentColor attackButton attackoverlay-in"
@@ -85,10 +138,6 @@ var app = window.app = new Vue({
                 this.$refs["attackOverlay"].className = "AccentColor attackButton attackoverlay-out";
             },this.currentWeapon.attackSpeed * 1000);
         },
-        generateNewEnemy: function() {
-            this.enemy.maxHealth = randomInteger(this.enemy.minMaxHealth,this.enemy.maxMaxHealth);
-            this.enemy.health = this.enemy.maxHealth;
-        }
     }
 });
 
