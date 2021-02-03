@@ -84,7 +84,10 @@
                 </span>
                 <div>
                     <p class="">Enemy Health: {{ enemy.health }}/{{enemy.maxHealth}}</p>
-                    <button class="AccentColor attackButton" v-on:click="attackEnemy">Attack</button>
+                    <button class="AccentColor attackButton" v-on:click="attackEnemy">
+                        <div ref="attackOverlay" class="attackoverlay-out"></div>
+                        Attack
+                    </button>
                 </div>
             </div>
         </div>

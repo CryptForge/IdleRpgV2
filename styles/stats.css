@@ -1,13 +1,13 @@
 #stats {
     position: absolute;
     top:50%;
-    right:0;
+    left:0;
     transform: translate(0, -50%);
     width: 3rem;
     height: 80%;
     transition: width 0.3s ease;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     background-color: var(--STATSPANELCOLOR);
     display:flex;
     flex-basis: 100%;
@@ -17,6 +17,7 @@
     justify-content: flex-start;
     padding: 1.5rem 1rem 1.5rem 1rem;
     box-shadow: 10px 15px 12px 0px rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 #stats:hover {
@@ -24,7 +25,9 @@
 }
 
 #stats:hover ~ #contentPanel {
-    left: 20%;
+    left: 80%;
+    filter: blur(10px);
+    opacity: 0.8;
 }
 
 #stats > .statitem {
@@ -33,6 +36,7 @@
 
 #stats:hover > .statitem {
     opacity: 1;
+    white-space: nowrap;
 }
 
 .statitem{
@@ -44,6 +48,8 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
     width: 100%;
     margin-bottom: 1rem;
+    max-height: 5rem;
+    white-space: nowrap;
 }
 
 .statitem:hover {

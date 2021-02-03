@@ -53,7 +53,7 @@ body, html {
     background-color: var(--APPCOLOR);
     align-content: center;
     border-radius: 2rem;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
 }
 #contentPanel > div {
     border-radius: 2rem;
@@ -140,5 +140,43 @@ button:focus {
 @media only screen and (max-width: 768px){
     .mobilecompatpanel {
         grid-column: 1 / span 2;
+    }
+}
+
+.attackoverlay-in {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    height: 0%;
+    width: calc(100% + 40px);
+    background-color: var(--MAINPANELCOLOR);
+    animation: overlay-in 0.3s ease forwards;
+}
+
+@keyframes overlay-in {
+    from {
+        height:0%;
+    }
+    to {
+        height:calc(100% + 40px);
+    }
+}
+
+.attackoverlay-out {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    height: calc(100% + 40px);
+    width: calc(100% + 40px);
+    background-color: var(--MAINPANELCOLOR);
+    animation: overlay-out 0.3s ease forwards;
+}
+
+@keyframes overlay-out {
+    from {
+        height:calc(100% + 40px);
+    }
+    to {
+        height:0%;
     }
 }

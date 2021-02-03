@@ -36,32 +36,34 @@ var app = window.app = new Vue({
         },
         stats: [
             {
-                title: "Title",
-                desc: "description",
-                value: "value",
+                title: "Weapon Damage",
+                desc: "Damage dealt to the enemy",
+                value: "",
             },
             {
-                title: "Title",
-                desc: "description",
-                value: "value",
-            },
-            {
-                title: "Title",
-                desc: "description",
+                title: "Attack Speed",
+                desc: "The speed at which you can swing your weapon",
                 value: "",
             },
         ],
     },
     mounted: function(){
-        this.stats[2].value = this.currentWeapon.damage;
+        this.stats[0].value = this.currentWeapon.attackSpeed;
+        this.stats[1].value = this.currentWeapon.damage;
     },
     watch: {
-        "currentWeapon.damage": {
+        "currentWeapon.attackSpeed": {
             handler:function (val, oldval) {
-                this.stats[2].value = val;
+                this.stats[0].value = val;
             },
             deep:true,
-        }
+        },
+        "currentWeapon.damage": {
+            handler:function (val, oldval) {
+                this.stats[1].value = val;
+            },
+            deep:true,
+        },
     },
     methods: {
         increaseDamage: function(damage) {
@@ -77,7 +79,11 @@ var app = window.app = new Vue({
                 this.generateNewEnemy();
             }
             this.canAttack = false;
-            setTimeout(()=>{this.canAttack = true;},this.currentWeapon.attackSpeed * 1000);
+            this.$refs["attackOverlay"].className = "attackoverlay-in"
+            setTimeout(()=>{
+                this.canAttack = true;
+                this.$refs["attackOverlay"].className = "attackoverlay-out";
+            },this.currentWeapon.attackSpeed * 1000);
         },
         generateNewEnemy: function() {
             this.enemy.maxHealth = randomInteger(this.enemy.minMaxHealth,this.enemy.maxMaxHealth);

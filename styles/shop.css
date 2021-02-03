@@ -30,11 +30,9 @@
 }
 @keyframes shopitem-appear {
     from {
-        filter: blur(30);
         transform:scale(0);
     }
     to {
-        filter: blur(0);
         transform: scale(1);
     }
 }
