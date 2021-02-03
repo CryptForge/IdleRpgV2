@@ -12,6 +12,10 @@
 .shop > div {
     background-color: var(--SHOPBGCOLOR);
     padding: 2rem 1.5rem 2rem 1.5rem;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-direction: row;
 }
 
 .shopitem{
