@@ -51,8 +51,8 @@ Vue.component('shop-item', {
 var app = window.app = new Vue({
     el: '#app',
     data: {
-        health: 10,
-        gold: 999999,
+        health: 100,
+        gold: 0,
         canAttack: true,
         currentWeapon: new Weapon("wooden sword",1,1.2,5),
         upgrades: {
@@ -87,6 +87,7 @@ var app = window.app = new Vue({
                 value: "",
             },
         ],
+        handbookOpen: false,
     },
     mounted: function(){
         this.stats[1].value = this.currentWeapon.attackSpeed;
@@ -109,6 +110,14 @@ var app = window.app = new Vue({
         },
     },
     methods: {
+        handbookclick: function() {
+            this.handbookOpen = !this.handbookOpen;
+            if (this.handbookOpen){
+                this.$refs["handBookButton"].classList.add("activeHandbook");
+            } else {
+                this.$refs["handBookButton"].classList.remove("activeHandbook");
+            }
+        },
         generateEnemy: function(){
             this.enemy.onDelete();
             this.enemy = new this.possibleEnemies[Math.floor(Math.random() * this.possibleEnemies.length)]();

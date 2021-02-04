@@ -6,6 +6,7 @@
     width: 3rem;
     height: 80%;
     transition: width 0.3s ease;
+    transition-delay: 0.3s;
     background-color: rgba(0, 0, 0, 0);
     display:flex;
     flex-basis: 100%;
@@ -14,7 +15,6 @@
     align-content: flex-start;
     justify-content: flex-start;
     padding: 1.5rem 1rem 1.5rem 1rem;
-    box-shadow: -10px 15px 12px 0px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
 .stats-bg {
@@ -23,18 +23,20 @@
     height:100%;
     top:0;
     left:0;
-    background-color: var(--STATSPANELCOLOR);
-    opacity: 1;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     transition: opacity 0.3s ease;
-}
-#stats:hover > .stats-bg {
-    opacity:0.9;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(30px) saturate(3);
 }
 
 #stats:hover {
+    transition-delay: 0s;
     width: 30%;
+}
+#stats:hover > .handBookButton, #stats:hover > .handBookBorder{
+    opacity: 1;
+    transition-delay: 0s;
 }
 
 #stats > .statitem {
@@ -46,7 +48,7 @@
     white-space: nowrap;
 }
 
-.statitem{
+.statitem {
     flex: auto;
     position: relative;
     background-color: var(--STATITEMCOLOR);
@@ -57,6 +59,7 @@
     margin-bottom: 1rem;
     max-height: 5rem;
     white-space: nowrap;
+    color: white;
 }
 
 .statitem:hover {
@@ -79,4 +82,49 @@
     right:1rem;
     top:50%;
     transform: translateY(-50%);
+}
+.handBookButton {
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translate(-50%, 50%);
+    width: 70%;
+    height:3rem;
+    font-size: 2rem;
+    padding: 15px 30px 15px 30px;
+    border-radius: 3rem;
+    border-style: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    background-color: white;
+    transition-delay: 0s;
+}
+
+.handBookButton:hover {
+    transition-delay: 0s;
+    transform: translate(-50%, 50%) scale(1);
+    cursor: pointer;
+}
+
+.activeHandbook {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.handBookBorder {
+    position:absolute;
+    bottom:-0.75rem;
+    left:50%;
+    transform:translate(-50%, 50%);
+    width: calc(70% + 1rem);
+    height: 2.5rem;
+    font-size: 2rem;
+    padding: 15px 30px 15px 30px;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border-style: none;
+    transition: transform 0.3s ease, opacity 0.4s ease;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(30px) saturate(3);
 }

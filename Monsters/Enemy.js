@@ -13,23 +13,34 @@ export default class Enemy {
     attack;
 
     svgsrc;
+    
     name;
+    desc;
 
-    constructor(mig, mag, mimah, mamah, mah, h, ats, dam, svgsrc, name){
-        this.minGold = mig;
-        this.maxGold = mag;
-        this.minMaxHealth = mimah;
-        this.maxMaxHealth = mamah;
-        this.maxHealth = mah;
-        this.health = h;
-        this.attackSpeed = ats;
-        this.damage = dam;
-        this.svgsrc = svgsrc;
+    constructor(minimum_gold,
+                maximum_gold,
+                minimum_health,
+                maximum_health,
+                attack_speed,
+                damage,
+                svg_source,
+                name,
+                description){
+        this.minGold = minimum_gold;
+        this.maxGold = maximum_gold;
+        this.minMaxHealth = minimum_health;
+        this.maxMaxHealth = maximum_health;
+        this.maxHealth = maximum_health
+        this.health = maximum_health
+        this.attackSpeed = attack_speed;
+        this.damage = damage;
+        this.svgsrc = svg_source;
         this.name = name;
+        this.desc = description;
 
         this.attack = setInterval(function(){
-            console.log(dam);
-            window.app.health -= parseInt(dam);
+            console.log(damage);
+            window.app.health -= parseInt(damage);
             window.app.hurt();
         }, this.attackSpeed*1000)
     }
