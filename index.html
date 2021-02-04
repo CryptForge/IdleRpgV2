@@ -94,22 +94,20 @@
                 </div>
             </div>
             <div style="grid-column: 1 / span 2; grid-row: 1 / span 3;" class="shadow shop mobilecompatpanel">
-                <span>
-                    <svg viewBox="0 0 50 50" class="grid-icon" style="display:inline-block;">
-                        <path d="M 3 48 C 3 50 3 50 5 50 L 45 50 C 47 50 47 50 47 48 L 47 35 C 47 33 47 33 45 33 L 5 33 C 3 33 3 33 3 35 Z" fill="#5e3d08" />
-                        <path d="M 3 32 L 0 40 L 0 43 L 50 43 V 40 L 47 32 Z" fill="#704a0d" />
-                        <path d="M 5 35 L 5 13 L 7 13 L 7 35 Z" fill="#69450d" />
-                        <path d="M 7.5 32 L 7.5 13 L 7 13 L 7 35 Z" fill="#75531b" />
-                        <path d="M 44 35 L 44 13 L 42 13 L 42 35 Z" fill="#69450d" />
-                        <path d="M 41.5 32 L 41.5 13 L 42 13 L 42 35 Z" fill="#75531b" />
-                        <path d="M 0 43 L 0 40 L 50 40 L 50 43 Z" fill="#69450d" />
-                        <path d="M50 13L0 13L10 0L40 0ZC50 17 41 17 41 13m0 0c0 4-10 4-10 0zm-10 0c0 4-11 4-11 0zm-11 0c0 4-10 4-10 0zm-10 0c0 4-10 4-10 0" fill="#d1d1d1" />
-                        <path d="M16 0L10 13C10 17 0 17 0 13L10 0ZM28 0L31 13C31 17 20 17 20 13L22 0ZM40 0L50 13C50 17 41 17 41 13L34 0Z" fill="#9c2424" />
-                    </svg>
-                    Shop
-                </span>
+                 <svg viewBox="0 0 50 50" style="font-size:16rem;" class="grid-icon shopIcon">
+                    <path d="M 3 48 C 3 50 3 50 5 50 L 45 50 C 47 50 47 50 47 48 L 47 35 C 47 33 47 33 45 33 L 5 33 C 3 33 3 33 3 35 Z" fill="#5e3d08" />
+                    <path d="M 3 32 L 0 40 L 0 43 L 50 43 V 40 L 47 32 Z" fill="#704a0d" />
+                    <text x="12" y="35" style="font-size:10px; fill:#d1d1d1;">SHOP</text>
+                    <path d="M 5 35 L 5 13 L 7 13 L 7 35 Z" fill="#69450d" />
+                    <path d="M 7.5 32 L 7.5 13 L 7 13 L 7 35 Z" fill="#75531b" />
+                    <path d="M 44 35 L 44 13 L 42 13 L 42 35 Z" fill="#69450d" />
+                    <path d="M 41.5 32 L 41.5 13 L 42 13 L 42 35 Z" fill="#75531b" />
+                    <path d="M 0 43 L 0 40 L 50 40 L 50 43 Z" fill="#69450d" />
+                    <path d="M50 13L0 13L10 0L40 0ZC50 17 41 17 41 13m0 0c0 4-10 4-10 0zm-10 0c0 4-11 4-11 0zm-11 0c0 4-10 4-10 0zm-10 0c0 4-10 4-10 0" fill="#d1d1d1" />
+                    <path d="M16 0L10 13C10 17 0 17 0 13L10 0ZM28 0L31 13C31 17 20 17 20 13L22 0ZM40 0L50 13C50 17 41 17 41 13L34 0Z" fill="#9c2424" />
+                </svg>
                 <div>
-                    <shop-item v-for="item in upgrades" :item="item" />
+                    <shop-item v-for="item in upgrades" @click.native="item.upgrade(item)"  :item="item" />
                 </div>
             </div>
             <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel mobilecompatpanel">

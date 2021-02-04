@@ -31,10 +31,10 @@
 }
 @keyframes shopitem-appear {
     from {
-        transform: scale(0) skewY(45deg);
+        transform: scale(0);
     }
     to {
-        transform: scale(1) skewY(0deg);
+        transform: scale(1);
     }
 }
 .shopitem:hover {
@@ -77,4 +77,16 @@
     font-weight: 700;
     font-size: 2rem;
     margin-right: 0.1em;
+}
+
+.shopIcon {
+    display: inline;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    top: 2rem;
+    left: 50%;
+    height:1em;
+    width: 1em;
+    transform: translateX(-50%);
 }

@@ -24,7 +24,7 @@ Vue.component('current-enemy', {
 Vue.component('shop-item', {
     template: 
     `
-    <div class="shopitem" v-on:click="item.upgrade()" v-if="item.unlocked" >
+    <div class="shopitem" v-if="item.unlocked">
         <span class="shopitem-price">
             <i class="fas fa-dollar-sign"></i>
             {{item.price}}
@@ -60,14 +60,15 @@ var app = window.app = new Vue({
                 "Sharpen",
                 "Makes the weapon even sharper! (+2 damage)",
                 5,1.25,
-                () => {window.app.increaseDamage(2);window.app.upgrades.luck.unlocked = true;}
+                () => {window.app.increaseDamage(2);window.app.upgrades.luck.unlocked = true;},
+                true,
             ),
             luck: new Upgrade(
                 "Luck",
                 "Increases your luck... somehow (more gold drops)",
                 10,1.5,
                 () => {window.app.$data.enemy.minGold++; window.app.$data.enemy.maxGold++},
-                false
+                false,
             )
         },
         getGold: function(){
