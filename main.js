@@ -21,33 +21,6 @@ Vue.component('current-enemy', {
     ],
 });
 
-Vue.component('shop-item', {
-    template: 
-    `
-    <div class="shopitem" v-if="item.unlocked">
-        <span class="shopitem-price">
-            <i class="fas fa-dollar-sign"></i>
-            {{item.price}}
-        </span>
-        <span class="shopitem-title">
-            {{item.Title}}
-        </span>
-        <span class="shopitem-desc">
-            {{item.Description}}
-        </span>
-        <span class="shopitem-level">
-            {{item.level}}
-        </span>
-    </div>
-    `,
-    props: [
-        "item"
-    ],
-    methods: {
-        
-    }
-});
-
 var app = window.app = new Vue({
     el: '#app',
     data: {
@@ -61,7 +34,6 @@ var app = window.app = new Vue({
                 "Makes the weapon even sharper! (+2 damage)",
                 5,1.25,
                 () => {window.app.increaseDamage(2);window.app.upgrades.luck.unlocked = true;},
-                true,
             ),
             luck: new Upgrade(
                 "Luck",

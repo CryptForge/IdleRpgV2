@@ -107,7 +107,21 @@
                     <path d="M16 0L10 13C10 17 0 17 0 13L10 0ZM28 0L31 13C31 17 20 17 20 13L22 0ZM40 0L50 13C50 17 41 17 41 13L34 0Z" fill="#9c2424" />
                 </svg>
                 <div>
-                    <shop-item v-for="item in upgrades" @click.native="item.upgrade(item)"  :item="item" />
+                    <div v-for="item in upgrades" class="shopitem" v-on:click="item.upgrade()" v-if="item.unlocked">
+                        <span class="shopitem-price">
+                            <i class="fas fa-dollar-sign"></i>
+                            {{item.price}}
+                        </span>
+                        <span class="shopitem-title">
+                            {{item.Title}}
+                        </span>
+                        <span class="shopitem-desc">
+                            {{item.Description}}
+                        </span>
+                        <span class="shopitem-level">
+                            {{item.level}}
+                        </span>
+                    </div>
                 </div>
             </div>
             <div style="grid-column: 3 / span 2; grid-row: 1 / span 2;" class="shadow mainpanel mobilecompatpanel">
